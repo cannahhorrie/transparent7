@@ -120,7 +120,7 @@
   document.body.appendChild(script);
 
   // Listen for messages from the parent window
-  window.addEventListener('message', function(event) {
+ window.addEventListener('message', function(event) {
     console.log('Received message:', event.data);
 
     if (event.data.type === 'unityMessage') {
@@ -144,11 +144,47 @@
             console.error('Unity instance is not available.');
           }
           break;
+        case 'SetCameraYPosition':
+          console.log('Setting camera Y position:', event.data.argument);
+          if (unityInstance) {
+            console.log('Sending message to Unity: SetCameraYPosition', event.data.argument);
+            unityInstance.SendMessage('Main Camera', 'SetCameraYPosition', event.data.argument);
+          } else {
+            console.error('Unity instance is not available.');
+          }
+          break;
+        case 'SetCameraZPosition':
+          console.log('Setting camera Z position:', event.data.argument);
+          if (unityInstance) {
+            console.log('Sending message to Unity: SetCameraZPosition', event.data.argument);
+            unityInstance.SendMessage('Main Camera', 'SetCameraZPosition', event.data.argument);
+          } else {
+            console.error('Unity instance is not available.');
+          }
+          break;
         case 'SetCameraRX':
           console.log('Setting camera X rotation:', event.data.argument);
           if (unityInstance) {
             console.log('Sending message to Unity: SetCameraRX', event.data.argument);
             unityInstance.SendMessage('Main Camera', 'SetCameraRX', event.data.argument);
+          } else {
+            console.error('Unity instance is not available.');
+          }
+          break;
+        case 'SetCameraRY':
+          console.log('Setting camera Y rotation:', event.data.argument);
+          if (unityInstance) {
+            console.log('Sending message to Unity: SetCameraRY', event.data.argument);
+            unityInstance.SendMessage('Main Camera', 'SetCameraRY', event.data.argument);
+          } else {
+            console.error('Unity instance is not available.');
+          }
+          break;
+        case 'SetCameraRZ':
+          console.log('Setting camera Z rotation:', event.data.argument);
+          if (unityInstance) {
+            console.log('Sending message to Unity: SetCameraRZ', event.data.argument);
+            unityInstance.SendMessage('Main Camera', 'SetCameraRZ', event.data.argument);
           } else {
             console.error('Unity instance is not available.');
           }
